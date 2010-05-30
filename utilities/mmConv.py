@@ -39,6 +39,8 @@ def unescape(text):
                text = "&amp;lt;"
             elif text[1:-1] == 'quot':
                text = "&quot;"
+            elif text[1:-1] == 'apos':
+               text = "&apos;"
             else:
                print text[1:-1]
                text = unichr(htmlentitydefs.name2codepoint[text[1:-1]])
