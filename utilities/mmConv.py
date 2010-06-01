@@ -29,7 +29,7 @@ def unescape(text):
             pass
       else:
          # named entity
-         # reescape the reserved characters.
+         # re-escape the reserved characters.
          try:
             if text[1:-1] == "amp":
                text = "&amp;amp;"
@@ -56,10 +56,7 @@ def main():
     file2 = open(sys.argv[1][:-3]+'_h'+'.mm','w')
 
     buf_xml = file1.readlines()
-    buf_str = buf_xml
-
-    for i in range( len(buf_xml) ):
-        buf_str[i] = unescape(buf_xml[i]).encode('utf8')
+    buf_str = [ unescape(line).encode('utf8') for line in buf_xml ]
 
     file2.writelines(buf_str)
 
